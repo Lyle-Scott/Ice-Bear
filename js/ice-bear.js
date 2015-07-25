@@ -25,7 +25,7 @@ Icebear.prototype.game = function() {
     console.log("game function initiated");
     this.roll();
     this.renderDice();
-    //create
+    this.iceBearQuestion();
 
 
 
@@ -80,17 +80,26 @@ Icebear.prototype.roll = function() {
 
 Icebear.prototype.renderDice = function() {
     console.log("rendering dice");
-    $('#dice-place').children().remove();
+    $('.erasable').children().remove();
     for (var i = 0; i < 5; i++) {
-        console.log(play.dice[i]);
-    $('#dice-place').append('<img class=\"dice\" src=\"' + pix[(play.dice[i])-1].link + '\"/>');
+        console.log(this.dice[i]);
+    $('#dice-place').append('<img class=\"dice\" src=\"' + pix[(this.dice[i])-1].link + '\"/>');
     }
 };
 
+Icebear.prototype.iceBearQuestion = function() {
+    
+    $('#question').append('<h3>How many polar bears do you see? </h3>');
+    $('#question').append('<input type ="number" id="answer" required=true></input>');
+    $('#question').append('<button type=button id="submit">?</button>');
+    // $('#submit').on({'click': 
+    //     bears = $('#answer').value
+    $('#answer').append('<h2>There are ' + this.dice[5] + 'bears</h2>');
+}
 
 var play = new Icebear();
 console.log("new game started");
-$('#dice-place').children().remove();
+$('.erasable').children().remove();
 $('#dice-place').append('<img class=\"dice\" src=\"images/hiver.png\"/>');
 $('.dice').on({'click': function() {
   play.game();
