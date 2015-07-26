@@ -1,8 +1,12 @@
+li {
+  display: inline;  
+}
+
 .dice { 
   display: inline;
   height: 100px;
   width: 100px; 
 }
-#answer {
+.answer {
   display: inline;
 }
