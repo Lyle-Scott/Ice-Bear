@@ -13,7 +13,7 @@ $.ajax({
   console.log(err);
 });
 
-var summer=false;
+var summer=true;
 //if summer has been solved, hints are given.
 
 var newGameMessage = '<h2>Click to begin</h2>';
@@ -36,9 +36,9 @@ var begin = function() {
         $('#hint-place').append('<img src=\"images/summer.png\""/>');
     };
     $('.erasable').children().remove();
-    $('#dice-place').append('<img class=\"dice\" src=\"images/winter.png\"/>');
+    $('#dice-place').append('<img id=\"start\" src=\"images/winter.png\"/>');
     $('#dice-place').append(newGameMessage);
-    $('.dice').on({'click': function() {
+    $('#start').on({'click': function() {
       play.game();
     }});
 }
