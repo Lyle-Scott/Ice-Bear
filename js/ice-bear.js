@@ -13,7 +13,7 @@ $.ajax({
   console.log(err);
 });
 
-var summer;
+var summer=false;
 //if summer has been solved, hints are given.
 
 var newGameMessage = '<h2>Click to begin</h2>';
@@ -32,8 +32,8 @@ var begin = function() {
     // $('attempt').append('<h6><small>plays: ' + iceBearAttempts + '</small></h6>');
     $('#hint-place').children().remove();
     if (summer) {
+        $('#hint-place').append('<h2 id=\"hint\">   Now that I am free, I can help you solve the riddle.</h2>');
         $('#hint-place').append('<img src=\"images/summer.png\""/>');
-        $('#hint-place').append('<h2 id=\"hint\"> Now that I am free, I can help you solve the riddle.</h2>');
     };
     $('.erasable').children().remove();
     $('#dice-place').append('<img class=\"dice\" src=\"images/winter.png\"/>');
@@ -112,7 +112,7 @@ Icebear.prototype.iceBearQuestion = function() {
     $('#question').append('<h3>How many polar bears do you see? </h3>');
     if (summer) {
         $('#hint').remove();
-        $('#hint-place').append('<h2 id=\"hint\">Read the words carefully</h2>');
+        $('#hint-place').prepend('<h2 id=\"hint\">Read the words carefully</h2>');
     };
     $('#question').append('<input type ="number" id="input" required=true></input>');
     $('#question').append('<button type=button id="submit">?</button>');
@@ -136,8 +136,9 @@ Icebear.prototype.fishQuestion = function() {
     $('#question').children().remove();
     $('#question').append('<h3>How many fish are in the sea? </h3>');
     if (summer) {
-        
-            '<h2>'
+        $('#hint').remove();
+        $('#hint-place').prepend('<h2 id=\"hint\">Fish avoid the bears and swim at the bottom of the sea.</h2>');
+    };
     $('#question').append('<input type="number" id="input" required=true></input>');
     $('#question').append('<button type=button id="submit">?</button>');
     $('#submit').on({'click': function() {
@@ -158,6 +159,10 @@ Icebear.prototype.planktonQuestion = function() {
     console.log("plankton: ", play.dice[7]);
     $('#question').children().remove();
     $('#question').append('<h3>What about the plankton? </h3>');
+    if (summer) {
+        $('#hint').remove();
+        $('#hint-place').prepend('<h2 id=\"hint\">Plankton avoid the fish and swim through the water.</h2>');
+    };
     $('#question').append('<input type="number" id="input" required=true></input>');
     $('#question').append('<button type=button id="submit">?</button>');
     $('#submit').on({'click': function() {
@@ -178,6 +183,10 @@ Icebear.prototype.holesQuestion = function() {
     console.log("holes: ", play.dice[8]);
     $('#question').children().remove();
     $('#question').append('<h3>Of course you know how many holes are in the ice.</h3>');
+    if (summer) {
+        $('#hint').remove();
+        $('#hint-place').prepend('<h2 id=\"hint\">Bears are not always at every single hole in the ice.</h2>');
+    };
     $('#question').append('<input type="number" id="input" required=true></input>');
     $('#question').append('<button type=button id="submit">?</button>');
     $('#submit').on({'click': function() {
@@ -197,6 +206,10 @@ Icebear.prototype.holesQuestion = function() {
 Icebear.prototype.winGame = function() {
     $('#question').children().remove();
     $('#question').append('<h3>Congratulations on solving the riddle. Winter is free.</h3>')
+    if (summer) {
+        $('#hint').remove();
+        $('#hint-place').prepend('<h2 id=\"hint\">Thank you for setting us all free.</h2>');
+    };
     $('#question').append('<button type=button id="submit">FIN</button>');
     localStorage.iceBearWin;
     $('#submit').on({'click': function() {

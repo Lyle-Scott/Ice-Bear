@@ -13,6 +13,9 @@ li {
 }
 
 #hint-place {
-  position: absolute;
+  position: relative;
   float: right;
+  margin-right: 50px;
+  width: 300px;
+  max-width: 75%; 
 }
