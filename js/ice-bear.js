@@ -36,7 +36,7 @@ var begin = function() {
         $('#hint-place').append('<img src=\"images/summer.png\""/>');
     };
     $('.erasable').children().remove();
-    $('#dice-place').append('<img id=\"start\" src=\"images/winter.png\"/>');
+    $('#start-place').append('<img id=\"start\" src=\"images/winter.png\"/>');
     $('#dice-place').append(newGameMessage);
     $('#start').on({'click': function() {
       play.game();
