@@ -13,6 +13,9 @@ $.ajax({
   console.log(err);
 });
 
+var summer;
+//if summer has been solved, hints are given.
+
 var newGameMessage = '<h2>Click to begin</h2>';
 
 var begin = function() {
@@ -27,8 +30,13 @@ var begin = function() {
     // localStorage.iceBearAttempts = JSON.stringify(iceBearAttempts);
     // $('attempt').children().remove();
     // $('attempt').append('<h6><small>plays: ' + iceBearAttempts + '</small></h6>');
+    $('#hint-place').children().remove();
+    if (summer) {
+        $('#hint-place').append('<img src=\"images/summer.png\""/>');
+        $('#hint-place').append('<h2 id=\"hint\"> Now that I am free, I can help you solve the riddle.</h2>');
+    };
     $('.erasable').children().remove();
-    $('#dice-place').append('<img class=\"dice\" src=\"images/hiver.png\"/>');
+    $('#dice-place').append('<img class=\"dice\" src=\"images/winter.png\"/>');
     $('#dice-place').append(newGameMessage);
     $('.dice').on({'click': function() {
       play.game();
@@ -102,6 +110,10 @@ Icebear.prototype.renderDice = function() {
 Icebear.prototype.iceBearQuestion = function() {
     console.log("bears: ", play.dice[5])  
     $('#question').append('<h3>How many polar bears do you see? </h3>');
+    if (summer) {
+        $('#hint').remove();
+        $('#hint-place').append('<h2 id=\"hint\">Read the words carefully</h2>');
+    };
     $('#question').append('<input type ="number" id="input" required=true></input>');
     $('#question').append('<button type=button id="submit">?</button>');
     $('#submit').on({'click': function() {
@@ -120,8 +132,12 @@ Icebear.prototype.iceBearQuestion = function() {
 
 Icebear.prototype.fishQuestion = function() {
     console.log("fish: ", play.dice[6]);
+    $('#hint').children().remove();
     $('#question').children().remove();
     $('#question').append('<h3>How many fish are in the sea? </h3>');
+    if (summer) {
+        
+            '<h2>'
     $('#question').append('<input type="number" id="input" required=true></input>');
     $('#question').append('<button type=button id="submit">?</button>');
     $('#submit').on({'click': function() {

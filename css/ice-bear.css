@@ -7,6 +7,12 @@ li {
   height: 100px;
   width: 100px; 
 }
+
 .answer {
   display: inline;
+}
+
+#hint-place {
+  position: absolute;
+  float: right;
 }
